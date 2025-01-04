@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Comment Automation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://github.com/7Alok901/UUUO/raw/main/new-folder/1735910597826.jpg') no-repeat center center fixed; /* Raw URL of your image */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white box */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .container h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin: 10px 0 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        input[type="file"],
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #32cd32;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #28a828;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Facebook Comment Automation</h1>
+        <form action="/process" method="post" enctype="multipart/form-data">
+            <label for="cookiesFile">Cookies File (TXT):</label>
+            <input type="file" id="cookiesFile" name="cookiesFile" accept=".txt">
+            
+            <label for="commentsFile">Comments File (TXT):</label>
+            <input type="file" id="commentsFile" name="commentsFile" accept=".txt">
+            
+            <label for="commenterName">Commenter's Name:</label>
+            <input type="text" id="commenterName" name="commenterName" placeholder="Enter commenter name">
+            
+            <label for="postId">Post ID:</label>
+            <input type="text" id="postId" name="postId" placeholder="Enter Facebook post ID">
+            
+            <label for="delay">Delay (seconds):</label>
+            <input type="number" id="delay" name="delay" value="5" min="1">
+            
+            <button type="submit">Start Commenting</button>
+        </form>
+    </div>
+</body>
+</html>
