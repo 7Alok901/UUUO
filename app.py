@@ -2,9 +2,8 @@ from flask import Flask, render_template_string, request, redirect, url_for
 import os
 import time
 import re
-import requests  # Importing requests to handle the HTTP requests
-from requests.exceptions import RequestException, ConnectionError  # For error handling in requests
-from urllib.parse import quote as url_quote  # Updated import for url_quote
+import requests
+from urllib.parse import quote as url_quote
 
 # Create the Flask application
 app = Flask(__name__)
@@ -116,33 +115,27 @@ def index():
 # Route to handle form submissions
 @app.route('/process', methods=['POST'])
 def process_form():
-    # Handle the uploaded files
     cookies_file = request.files.get('cookiesFile')
     comments_file = request.files.get('commentsFile')
     
-    # Save the files to the upload folder
     if cookies_file:
         cookies_file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'cookies.txt'))
     if comments_file:
         comments_file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'comments.txt'))
     
-    # Get the other form inputs
     first_name = request.form.get('firstName')
     last_name = request.form.get('lastName')
     post_id = request.form.get('postId')
     delay_time = request.form.get('delayTime')
 
-    # Print out the values (You can replace this with actual processing logic)
     print(f"First Name: {first_name}")
     print(f"Last Name: {last_name}")
     print(f"Post ID: {post_id}")
     print(f"Delay Time: {delay_time} seconds")
 
-    # You can use the following logic to process the files and send comments (if needed):
     cookies_data = read_file('uploads/cookies.txt')
     comments_data = read_file('uploads/comments.txt')
 
-    # Define the delay as per user input
     try:
         delay = int(delay_time)
         if delay < 60:
@@ -152,9 +145,6 @@ def process_form():
         print("[!] Invalid delay time input. Setting delay to default of 60 seconds.")
         delay = 60
 
-    # Add actual commenting functionality here (based on your requirements)
-
-    # Redirect the user back to the homepage after form processing
     return redirect(url_for('index'))
 
 def read_file(file_path):
