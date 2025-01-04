@@ -4,6 +4,7 @@ import time
 import re
 import requests  # Importing requests to handle the HTTP requests
 from requests.exceptions import RequestException, ConnectionError  # For error handling in requests
+from urllib.parse import quote as url_quote  # Updated import for url_quote
 
 # Create the Flask application
 app = Flask(__name__)
@@ -166,5 +167,3 @@ def read_file(file_path):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
